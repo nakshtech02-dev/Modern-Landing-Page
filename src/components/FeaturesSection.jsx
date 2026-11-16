@@ -6,19 +6,19 @@ const FeaturesSection = () => {
       icon: "🔍",
       title: "Find out what you need",
       description: "We present you a proposal and discuss nitty-gritty like",
-      bgColor: "purple-100",
+      bgColor: "bg-purple-100",
     },
     {
       icon: "⚙️",
       title: "Work out the details",
       description: "Communication protocols apart from engagement models",
-      bgColor: "red-100",
+      bgColor: "bg-red-100",
     },
     {
       icon: "🚀",
       title: "We get to work fast",
       description: "Protocols apart from engage models, pricing billing",
-      bgColor: "amber-100",
+      bgColor: "bg-amber-100",
     },
   ];
   return (
@@ -42,7 +42,7 @@ const FeaturesSection = () => {
               className=" max-w-xs flex flex-col items-center text-center"
             >
               <div
-                className={`h-20 w-20 flex rounded-full justify-center items-center bg-${feature.bgColor}`}
+                className={`h-20 w-20 flex rounded-full justify-center items-center ${feature.bgColor}`}
               >
                 {feature.icon}
               </div>
