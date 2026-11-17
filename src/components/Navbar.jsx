@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
+import { motion } from "motion/react"
+import { fadeIn } from "../utils/motion";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +14,12 @@ const Navbar = () => {
     { href: "#testimonials", label: "Testimonials" },
   ];
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm ">
+    <motion.nav
+    variants={fadeIn('down',0.2)}
+    initial="hidden"
+    whileInView="show"
+    viewport={{once:true}}
+     className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm ">
       <div className="w-full container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8  md:h-20 h-16  ">
         {/* LOGO  */}
         <div className="flex items-center -space-x-1 cursor-pointer">
@@ -40,7 +47,7 @@ const Navbar = () => {
               onClick={() => setActiveLink(link.href)}
               key={index}
               href={link.href}
-              className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all ${activeLink === link.href ? "text-blue-600 after:w-full" : "text-gray-600 hover:text-gray-900"} `}
+              className={`text-md font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all ${activeLink === link.href ? "text-blue-600 after:w-full" : "text-gray-600 hover:text-gray-900"} `}
             >
               {link.label}
             </a>
@@ -75,7 +82,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 };
 

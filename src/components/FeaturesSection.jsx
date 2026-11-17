@@ -6,19 +6,19 @@ const FeaturesSection = () => {
       icon: "🔍",
       title: "Find out what you need",
       description: "We present you a proposal and discuss nitty-gritty like",
-      bgColor: "bg-purple-100",
+      bgColor: "bg-[#F1EFFD]",
     },
     {
       icon: "⚙️",
       title: "Work out the details",
       description: "Communication protocols apart from engagement models",
-      bgColor: "bg-red-100",
+      bgColor: "bg-[#FEE7EF]",
     },
     {
       icon: "🚀",
       title: "We get to work fast",
       description: "Protocols apart from engage models, pricing billing",
-      bgColor: "bg-amber-100",
+      bgColor: "bg-[#FFF3E4]",
     },
   ];
   return (
@@ -42,18 +42,20 @@ const FeaturesSection = () => {
               className=" max-w-xs flex flex-col items-center text-center"
             >
               <div
-                className={`h-20 w-20 flex rounded-full justify-center items-center ${feature.bgColor}`}
+                className={`text-3xl h-24 w-24 flex rounded-full justify-center items-center ${feature.bgColor}`}
               >
                 {feature.icon}
               </div>
-              <h1 className="text-xl font-semibold my-5">{feature.title}</h1>
-              <p className="text-gray-400">{feature.description}</p>
+              <h1 className="text-2xl font-medium my-5">{feature.title}</h1>
+              <p className="text-gray-500">{feature.description}</p>
             </div>
           ))}
         </div>
 
-        <button className="bg-blue-500 px-5 py-2 rounded-full  text-white hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-300 transition-all flex mx-auto">
+        <button className="bg-blue-600 px-8 py-3 rounded-full  text-white hover:bg-blue-700   transition-colors flex mx-auto cursor-pointer relative z-10">
           Become a Partner
+
+          <div className="absolute  -z-10 w-full h-full rounded-full bg-blue-600/50 blur-xl top-0 left-0"></div>
         </button>
       </div>
     </section>
