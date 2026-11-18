@@ -1,4 +1,5 @@
-import React from "react";
+import { motion } from "motion/react";
+import { fadeIn, textVariant } from "../utils/motion";
 
 const FeaturesSection = () => {
   const features = [
@@ -22,43 +23,65 @@ const FeaturesSection = () => {
     },
   ];
   return (
-    <section className="w-full bg-white py-16 ">
-      <div className=" container mx-auto">
+    <motion.section
+     variants={fadeIn('up', 0.2)}
+      initial="hidden"
+      whileInView="show"
+     className="w-full bg-white py-16 ">
+      <motion.div variants={fadeIn('up', 0.3)} className=" container mx-auto">
         {/* Heading */}
         <div className="flex flex-col justify-center items-center">
-          <h1 className="md:text-3xl text-2xl font-bold">
+          <motion.h1
+          variants={textVariant(0.2)}
+           className="md:text-3xl text-2xl font-bold">
             How can we help your business?
-          </h1>
-          <p className="text-lg text-gray-500 mt-2 text-center">
+          </motion.h1>
+          <motion.p
+          variants={fadeIn('up', 0.4)}
+           className="text-lg text-gray-500 mt-2 text-center">
             When you resell besnik, you build trust and increase
-          </p>
+          </motion.p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-5 md:my-15 my-5 place-items-center ">
+        <motion.div
+         variants={fadeIn('up', 0.5)}
+         className="grid md:grid-cols-3 grid-cols-1 gap-5 md:my-15 my-5 place-items-center ">
           {features.map((feature, index) => (
-            <div
+            <motion.div
+            variants={fadeIn('up', 0.3 * (index + 1))}
               key={index}
               className=" max-w-xs flex flex-col items-center text-center"
             >
-              <div
+              <motion.div
+              variants={fadeIn('down', 0.4 * (index + 1))}
                 className={`text-3xl h-24 w-24 flex rounded-full justify-center items-center ${feature.bgColor}`}
               >
                 {feature.icon}
-              </div>
-              <h1 className="text-2xl font-medium my-5">{feature.title}</h1>
-              <p className="text-gray-500">{feature.description}</p>
-            </div>
+              </motion.div>
+              <motion.h1
+              variants={textVariant(0.3)}
+               className="text-2xl font-medium my-5">{feature.title}</motion.h1>
+              <motion.p 
+              variants={fadeIn('up', 0.6 * (index + 1))}
+               className="text-gray-500">{feature.description}</motion.p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <button className="bg-blue-600 px-8 py-3 rounded-full  text-white hover:bg-blue-700   transition-colors flex mx-auto cursor-pointer relative z-10">
+        <motion.button
+
+        variants={fadeIn('up', 0.8)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        
+        className="bg-blue-600 px-8 py-3 rounded-full  text-white hover:bg-blue-700   transition-colors flex mx-auto cursor-pointer relative z-10">
           Become a Partner
 
           <div className="absolute  -z-10 w-full h-full rounded-full bg-blue-600/50 blur-xl top-0 left-0"></div>
-        </button>
-      </div>
-    </section>
+        </motion.button>
+      </motion.div>
+    </motion.section>
   );
 };
 

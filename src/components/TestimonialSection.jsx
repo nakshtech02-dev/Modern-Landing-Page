@@ -9,6 +9,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
+import { motion } from "motion/react";
+import { fadeIn, textVariant } from "../utils/motion";
 
 const TestimonialSection = () => {
   const testimonials = [
@@ -51,17 +53,32 @@ const TestimonialSection = () => {
   ];
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto" id="testimonials">
-      <div className="text-center mb-12">
+      <motion.h2
+        variants={textVariant(0.2)}
+        initial="hidden"
+        whileInView="show"
+        className="text-center mb-12"
+      >
         <h1 className="text-2xl md:text-4xl font-bold md:mb-4 ">
           What our happy client say
         </h1>
-        <p className="text-gray-600 ">
+        <motion.p
+          variants={fadeIn("up", 0.4)}
+          initial="hidden"
+          whileInView="show"
+          className="text-gray-600 "
+        >
           Things that make it the best place to start trading
-        </p>
-      </div>
+        </motion.p>
+      </motion.h2>
 
       {/* Testimonial Cards */}
-      <div className="relative ">
+      <motion.div
+        variants={fadeIn("up", 0.5)}
+        initial="hidden"
+        whileInView="show"
+        className="relative "
+      >
         {/* swiper cards */}
 
         <Swiper
@@ -89,39 +106,54 @@ const TestimonialSection = () => {
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="h-full md:py-12 py-4">
-              <div className="text-center bg-white p-4 rounded-lg shadow-md h-full flex flex-col">
-                <div className="w-24 h-24 mx-auto mb-4">
-                  <img
+              <motion.div 
+                variants={fadeIn('up', 0.3 * (index + 1))} className="text-center bg-white p-4 rounded-lg shadow-md h-full flex flex-col">
+                <motion.div 
+                  variants={fadeIn('down', 0.4 * (index + 1))} className="w-24 h-24 mx-auto mb-4">
+                  <motion.img
+                    variants={fadeIn('up', 0.5 * (index + 1))}
                     src={testimonial.image}
                     alt=""
                     className="w-full h-full object-cover rounded-full"
                   />
-                </div>
-                <div className="flex justify-center mb-2">
+                </motion.div>
+                <motion.div 
+                  variants={fadeIn('up', 0.4 * (index + 1))}className="flex justify-center mb-2">
                   {[...Array(5)].map((_, starIndex) => (
-                    <span className="text-yellow-400">
+                    <motion.span   variants={fadeIn('up', 0.1 * starIndex)} className="text-yellow-400">
                       <FaStar />
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{testimonial.name}</h3>
-                <p className="text-gray-600">{testimonial.text}</p>
-              </div>
+                </motion.div>
+                <motion.h3 
+                  variants={textVariant(0.3)} className="text-xl font-semibold mb-3">
+                  {testimonial.name}
+                </motion.h3>
+                <motion.p 
+                  variants={fadeIn('up', 0.6 * (index + 1))} className="text-gray-600">{testimonial.text}</motion.p>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
 
         {/* navigational button  */}
 
-        <div className="flex justify-center gap-4 md:mt-8 mt-4">
-          <button className="swiper-button-prev-custom w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer">
+        <motion.div 
+          variants={fadeIn('up', 0.7)} className="flex justify-center gap-4 md:mt-8 mt-4">
+          <motion.button 
+            variants={fadeIn('right', 0.8)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }} className="swiper-button-prev-custom w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer">
             <BsChevronLeft className="size-6" />
-          </button>
-          <button className="swiper-button-next-custom w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer">
+          </motion.button>
+          <motion.button 
+            variants={fadeIn('left', 0.8)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }} className="swiper-button-next-custom w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all duration-200 cursor-pointer">
             <BsChevronRight className="size-6" />
-          </button>
-        </div>
-      </div>
+          </motion.button>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
