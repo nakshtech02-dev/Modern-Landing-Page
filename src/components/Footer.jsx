@@ -85,7 +85,7 @@ const Footer = () => {
                     {Object.entries(footerLinks).map(([category , links ], categoryIndex) => (
                         <motion.div 
                   key={category}
-                  variants={fadeIn('up', 0.3 * (categoryIndex + 1))} key={category}>
+                  variants={fadeIn('up', 0.3 * (categoryIndex + 1))} >
                             <motion.h3 
                     variants={textVariant(0.2)} className="text-lg font-medium mb-4 uppercase">{category}</motion.h3>
 
